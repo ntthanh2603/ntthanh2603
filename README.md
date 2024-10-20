@@ -20,21 +20,23 @@
 </p>
 
 <h2> 🔭 Socials</h2>
-<div align=center>
+<div>
   <p align="left"> <a href="https://discord.com/users/22022624" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/discord.svg" width="32" height="32" /> </picture> </a> <a href="https://www.facebook.com/ntthanh2603" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/facebook-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/facebook.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/facebook.svg" width="32" height="32" /> </picture> </a> <a href="https://www.github.com/TuanThanh263" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/github.svg" width="32" height="32" /> </picture> </a> <a href="https://www.x.com/tuanthanhdev" target="_blank" rel="noreferrer"> <picture> <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter-dark.svg" /> <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" /> <img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/socials/twitter.svg" width="32" height="32" /> </picture> </a></p>
 </div>
 
 
 <h2> 🤗 My GitHub Stats </h2>
-<div align=center>
-    <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=TuanThanh263&theme=default" />
-  <img width=390 src="https://github-readme-streak-stats-salesp07.vercel.app/?user=TuanThanh263&count_private=true&theme=default&border_radius=10" alt="streak stats"/>
-  <img width=390 src="https://github-readme-stats-salesp07.vercel.app/api?username=TuanThanh263&count_private=true&show_icons=true&theme=default&rank_icon=github&border_radius=10" alt="readme stats" />
-  <img width=325 align="center" src="https://github-readme-stats-salesp07.vercel.app/api/top-langs/?username=TuanThanh263&hide=HTML&langs_count=8&layout=compact&theme=default&border_radius=10&size_weight=0.5&count_weight=0.5&exclude_repo=github-readme-stats" alt="top langs" />
+<img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=TuanThanh263&theme=default" />
+<div >
+  <img alt="Nguyen Tuan Thanh's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=TuanThanh263&show_icons=true&theme=transparent"/>
+  <img alt="Top langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=TuanThanh263&layout=compact&&langs_count=8"/>
 </div>
 
+
+
+
 <h2> 💖 My Contributions </h2>
-<div align="center">
+<div >
   <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/TuanThanh263/TuanThanh263/output/github-contribution-grid-snake.svg" />
 </div>
 
