@@ -37,4 +37,4 @@
   <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/TuanThanh2kk4/TuanThanh2kk4/output/github-contribution-grid-snake.svg" />
 </div>
 
-### 🙋‍♂️ Thank you for reading my short confession. I wish you success and happiness.
+<h2> 🙋‍♂️ Thank you for reading my short confession. I wish you success and happiness.</h2>
