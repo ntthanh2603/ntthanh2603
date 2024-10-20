@@ -30,4 +30,11 @@ When I was a child, I didn't like studying because I didn't know how interesting
 
 <a href="http://www.github.com/TuanThanh2kk4"><img src="https://github-readme-streak-stats.herokuapp.com/?user=TuanThanh2kk4&stroke=ffffff&background=a2b4ba&ring=0891b2&fire=0891b2&currStreakNum=ffffff&currStreakLabel=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" /></a>
 
+## Contributions in the last year 🚉
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/loozzi/loozzi/output/github-contribution-grid-snake-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/loozzi/loozzi/output/github-contribution-grid-snake.svg" />
+  <img alt="github-snake" src="github-snake.svg" />
+</picture>
+
 ### ⚡ Thank you for reading my short confession. I wish you success and happiness.
