@@ -4,7 +4,7 @@
 
 # 🚀 My name is Nguyen Tuan Thanh
 
-#### 💫 Backend Developer
+### 💫 Backend Developer
 
 - 🌍 I'm based in VietNam
 - ✉️ You can contact me at email: [tuanthanh2kk4@gmail.com](mailto:tuanthanh2kk4@gmail.com)
