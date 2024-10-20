@@ -29,3 +29,5 @@ When I was a child, I didn't like studying because I didn't know how interesting
 <a href="http://www.github.com/TuanThanh2kk4"><img src="https://github-readme-stats.vercel.app/api?username=TuanThanh2kk4&show_icons=true&hide=&count_private=true&title_color=0891b2&text_color=ffffff&icon_color=0891b2&bg_color=1c1917&hide_border=true&show_icons=true" alt="TuanThanh2kk4's GitHub stats" /></a>
 
 <a href="http://www.github.com/TuanThanh2kk4"><img src="https://github-readme-streak-stats.herokuapp.com/?user=TuanThanh2kk4&stroke=ffffff&background=1c1917&ring=0891b2&fire=0891b2&currStreakNum=ffffff&currStreakLabel=0891b2&sideNums=ffffff&sideLabels=ffffff&dates=ffffff&hide_border=true" /></a>
+
+### ⚡ Thank you for reading my short confession. I wish you success and happiness.
