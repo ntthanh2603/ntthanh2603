@@ -20,10 +20,10 @@
 
 
 <h2> 🤗 My GitHub Stats </h2>
-<img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Liam-2603&theme=default" />
+<img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ntthanh2603&theme=default" />
 <div >
-  <img alt="Nguyen Tuan Thanh's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=Liam-2603&show_icons=true&theme=transparent"/>
-  <img alt="Top langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Liam-2603&layout=compact&&langs_count=8"/>
+  <img alt="Nguyen Tuan Thanh's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=ntthanh2603&show_icons=true&theme=transparent"/>
+  <img alt="Top langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ntthanh2603&layout=compact&&langs_count=8"/>
 </div>
 
 
@@ -31,7 +31,7 @@
 
 <h2> 💖 My Contributions </h2>
 <div >
-  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/Liam-2603/Liam-2603/output/github-contribution-grid-snake.svg" />
+  <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/ntthanh2603/ntthanh2603/output/github-contribution-grid-snake.svg" />
 </div>
 
 ### 🙋‍♂️ Thank you for reading my short confession. I wish you success and happiness.
