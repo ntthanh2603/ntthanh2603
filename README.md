@@ -26,10 +26,9 @@
     <a href="https://pytorch.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/pytorch-colored.svg" width="36" height="36" alt="PyTorch" /></a>
     <a href="https://www.tensorflow.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tensorflow-colored.svg" width="36" height="36" alt="TensorFlow" /></a>
     <a href="https://redis.io/" target="_blank" rel="noreferrer"><img src="https://redis.io/wp-content/uploads/2024/04/Logotype.svg?auto=webp&quality=85,75&width=120" width="36" height="36" alt="Redis" /></a>
-    <a href="https://react.dev/" target="_blank" rel="noreferrer"><img src="docs/images/react.svg" width="36" height="36" alt="React" /></a>
+    <a href="https://react.dev/" target="_blank" rel="noreferrer"><img src="docs/images/logo_dark.svg" width="36" height="36" alt="React" /></a>
     <a href="https://reactnative.dev/" target="_blank" rel="noreferrer"><img src="https://reactnative.dev/img/header_logo.svg" width="36" height="36" alt="React Native" /></a>
 </p>
-
 
 <h2> 🤗 My GitHub Stats </h2>
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ntthanh2603&theme=default" />
@@ -38,13 +37,9 @@
   <img alt="Top langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ntthanh2603&layout=compact&&langs_count=8"/>
 </div>
 
-
-
-
 <h2> 💖 My Contributions </h2>
 <div >
   <img alt="snake eating my contributions" src="https://raw.githubusercontent.com/ntthanh2603/ntthanh2603/output/github-contribution-grid-snake.svg" />
 </div>
 
 ### 🙋‍♂️ Thank you for reading my short confession. I wish you success and happiness.
-
