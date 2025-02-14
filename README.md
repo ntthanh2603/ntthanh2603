@@ -35,7 +35,7 @@
 </p>
 
 <h2> 🤗 My GitHub Stats </h2>
-<img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ntthanh2603&theme=default" style=" width: 825px; "/>
+<img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ntthanh2603&theme=default" style=" width: 780px; "/>
 <div >
   <img alt="Nguyen Tuan Thanh's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=ntthanh2603&show_icons=true&theme=transparent" />
   <img alt="Top langs" src="https://github-readme-stats.vercel.app/api/top-langs/?username=ntthanh2603&layout=compact&&langs_count=8" style=" height: 195px; "/>
