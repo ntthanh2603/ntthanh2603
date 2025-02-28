@@ -1,8 +1,8 @@
 <h1 align="center">
-    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;" />
+    <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+My+name+is+Tuan+Thanh👋;" />
 </h1>
 
-<h2>🚀 My name is Nguyen Tuan Thanh 🚀</h2>
+ <!-- <h2>🚀 My name is Nguyen Tuan Thanh 🚀</h2> -->
 
 <!-- ### 💫 Software engineer
 
@@ -34,8 +34,8 @@
     <a href="https://react.dev/" target="_blank" rel="noreferrer"><img src="docs/images/logo_dark.svg" width="36" height="36" alt="React" /></a>
 </p>
 -->
-
-<h2> 🤗 My GitHub Stats </h2>
+ 
+<!-- <h2> 🤗 My GitHub Stats </h2> -->
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ntthanh2603&theme=default" style=" width: 780px; "/>
 <div >
   <img alt="Nguyen Tuan Thanh's GitHub stats" src="https://github-readme-stats.vercel.app/api?username=ntthanh2603&show_icons=true&theme=transparent" />
