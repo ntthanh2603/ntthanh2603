@@ -2,7 +2,7 @@
     <img src="https://readme-typing-svg.herokuapp.com/?font=Righteous&size=35&center=true&vCenter=true&width=500&height=70&duration=4000&lines=Hi+There!+👋;" />
 </h1>
 
-<h2>🚀 My name is Nguyen Tuan Thanh</h2>
+<h2>🚀 My name is Nguyen Tuan Thanh 🚀</h2>
 
 <!-- ### 💫 Software engineer
 
@@ -12,6 +12,7 @@
 <h2> 🌟 Describe myself </h2>
 😃 When I was a child, I didn't like studying because I didn't know how interesting cosmic knowledge was. Maybe I won't be able to grasp a small part of it in my whole life, but since I was in 6th grade, I know it's very important. Because of my logical and curious nature, I'm very passionate about math, physics, and chemistry. I also won a few prizes in the excellent student exam. Time passed, and I was in 12th grade because my dream was to become a doctor, so I chose to study AI. Haha, just kidding, but dreams are dreams, but when choosing my university aspirations, I chose AI because I found it interesting, like a magician, and I could study math. So life brought me into contact with the information technology industry and I always cherished the idea of ​​becoming a programmer who could build a system with tens of thousands of users and all the utilities for everyone. That's my dream, that's the motivation for me to learn every day. If you find me interesting and want to interact with me, please contact me.  -->
 
+<!--
 <h2> 💻 Skills </h2>
 <p align="left">
     <a href="https://git-scm.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/git-colored.svg" width="36" height="36" alt="Git" /></a>
@@ -31,8 +32,8 @@
     <a href="https://pytorch.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/pytorch-colored.svg" width="36" height="36" alt="PyTorch" /></a>
     <a href="https://www.tensorflow.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/danielcranney/readme-generator/main/public/icons/skills/tensorflow-colored.svg" width="36" height="36" alt="TensorFlow" /></a>
     <a href="https://react.dev/" target="_blank" rel="noreferrer"><img src="docs/images/logo_dark.svg" width="36" height="36" alt="React" /></a>
-
 </p>
+-->
 
 <h2> 🤗 My GitHub Stats </h2>
 <img src="http://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=ntthanh2603&theme=default" style=" width: 780px; "/>
