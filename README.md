@@ -1,6 +1,6 @@
 
 
- <!-- <h2>🚀 My name is Nguyen Tuan Thanh 🚀</h2> -->
+ <h2>🚀 Hi bro, My name is Nguyen Tuan Thanh 🚀</h2> 
 
 <!-- ### 💫 Software engineer
 
