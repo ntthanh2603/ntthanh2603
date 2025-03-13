@@ -1,38 +1,38 @@
-# Redis in NestJS with ioredis
+# Redis trong NestJS
 
-## Table of Contents
+## Mục lục
 
-- [Introduction](#introduction)
-- [Setting up Redis with NestJS](#setting-up-redis-with-nestjs)
-- [Redis Data Types and Operations](#redis-data-types-and-operations)
-  - [Strings](#strings)
-  - [Lists](#lists)
-  - [Sets](#sets)
-  - [Sorted Sets](#sorted-sets)
-  - [Hashes](#hashes)
-  - [Streams](#streams)
-  - [Bitmaps](#bitmaps)
+- [Giới thiệu](#giới-thiệu)
+- [Cài đặt Redis với NestJS](#cài-đặt-redis-với-nestjs)
+- [Kiểu dữ liệu Redis và các thao tác](#kiểu-dữ-liệu-redis-và-các-thao-tác)
+  - [Strings (Chuỗi)](#strings-chuỗi)
+  - [Lists (Danh sách)](#lists-danh-sách)
+  - [Sets (Tập hợp)](#sets-tập-hợp)
+  - [Sorted Sets (Tập hợp có thứ tự)](#sorted-sets-tập-hợp-có-thứ-tự)
+  - [Hashes (Bảng băm)](#hashes-bảng-băm)
+  - [Streams (Luồng dữ liệu)](#streams-luồng-dữ-liệu)
+  - [Bitmaps (Bản đồ bit)](#bitmaps-bản-đồ-bit)
   - [HyperLogLog](#hyperloglog)
-  - [Geospatial](#geospatial)
-- [Advanced Concepts](#advanced-concepts)
-  - [Transactions](#transactions)
-  - [Pub/Sub](#pubsub)
-  - [Lua Scripting](#lua-scripting)
-- [Common Use Cases in NestJS](#common-use-cases-in-nestjs)
+  - [Geospatial (Dữ liệu không gian địa lý)](#geospatial-dữ-liệu-không-gian-địa-lý)
+- [Khái niệm nâng cao](#khái-niệm-nâng-cao)
+  - [Transactions (Giao dịch)](#transactions-giao-dịch)
+  - [Pub/Sub (Xuất bản/Đăng ký)](#pubsub-xuất-bảnđăng-ký)
+  - [Lua Scripting (Lập trình Lua)](#lua-scripting-lập-trình-lua)
+- [Các trường hợp sử dụng phổ biến trong NestJS](#các-trường-hợp-sử-dụng-phổ-biến-trong-nestjs)
 
-## Introduction
+## Giới thiệu
 
-Redis (Remote Dictionary Server) is an in-memory data structure store that can be used as a database, cache, message broker, and streaming engine. This document covers the core Redis data types and how to interact with them using the ioredis library in a NestJS application.
+Redis (Remote Dictionary Server) là một kho lưu trữ cấu trúc dữ liệu trong bộ nhớ có thể được sử dụng làm cơ sở dữ liệu, bộ nhớ đệm, bộ trung gian tin nhắn và công cụ phát trực tuyến. Tài liệu này đề cập đến các kiểu dữ liệu cốt lõi của Redis và cách tương tác với chúng bằng thư viện ioredis trong ứng dụng NestJS.
 
-## Setting up Redis with NestJS
+## Cài đặt Redis với NestJS
 
-### Installation
+### Cài đặt thư viện
 
 ```bash
 npm install ioredis @nestjs/common
 ```
 
-### Module Setup
+### Thiết lập Module
 
 ```typescript
 // redis.module.ts
@@ -61,7 +61,7 @@ import * as Redis from "ioredis";
 export class RedisModule {}
 ```
 
-### Service Example
+### Ví dụ về Service
 
 ```typescript
 // redis.service.ts
@@ -72,20 +72,28 @@ import Redis from "ioredis";
 export class RedisService {
   constructor(@Inject("REDIS_CLIENT") private readonly redis: Redis) {}
 
-  // Methods will be implemented for each data type
+  // Các phương thức sẽ được triển khai cho từng kiểu dữ liệu
 }
 ```
 
-## Redis Data Types and Operations
+## Kiểu dữ liệu Redis và các thao tác
 
-### Strings
+### Strings (Chuỗi)
 
-Strings are the most basic data type in Redis and can store text, serialized objects, or binary data up to 512MB.
+Chuỗi là kiểu dữ liệu cơ bản nhất trong Redis và có thể lưu trữ văn bản, đối tượng tuần tự hóa hoặc dữ liệu nhị phân lên đến 512MB.
 
-#### CRUD Operations
+#### Các thao tác CRUD
 
 ```typescript
-// In RedisService
+// Trong RedisService
+
+/**
+ * Lưu trữ một chuỗi vào Redis với khóa đã cho
+ * @param key Khóa để lưu trữ giá trị
+ * @param value Giá trị cần lưu trữ
+ * @param ttl Thời gian sống của khóa (giây) - tùy chọn
+ * @returns Promise trả về 'OK' nếu thành công
+ */
 async setString(key: string, value: string, ttl?: number): Promise<'OK'> {
   if (ttl) {
     return this.redis.set(key, value, 'EX', ttl);
@@ -93,38 +101,66 @@ async setString(key: string, value: string, ttl?: number): Promise<'OK'> {
   return this.redis.set(key, value);
 }
 
+/**
+ * Lấy giá trị chuỗi từ Redis theo khóa
+ * @param key Khóa cần truy vấn
+ * @returns Promise trả về giá trị chuỗi hoặc null nếu không tìm thấy
+ */
 async getString(key: string): Promise<string | null> {
   return this.redis.get(key);
 }
 
+/**
+ * Cập nhật giá trị chuỗi trong Redis
+ * @param key Khóa cần cập nhật
+ * @param value Giá trị mới
+ * @param ttl Thời gian sống mới (giây) - tùy chọn
+ * @returns Promise trả về 'OK' nếu thành công
+ */
 async updateString(key: string, value: string, ttl?: number): Promise<'OK'> {
   return this.setString(key, value, ttl);
 }
 
+/**
+ * Xóa khóa và giá trị tương ứng khỏi Redis
+ * @param key Khóa cần xóa
+ * @returns Promise trả về số lượng khóa đã xóa thành công
+ */
 async deleteString(key: string): Promise<number> {
   return this.redis.del(key);
 }
 
-// Increment operations
+/**
+ * Tăng giá trị số nguyên của khóa
+ * @param key Khóa cần tăng giá trị
+ * @param by Số lượng tăng (mặc định là 1)
+ * @returns Promise trả về giá trị sau khi tăng
+ */
 async increment(key: string, by = 1): Promise<number> {
   return this.redis.incrby(key, by);
 }
 
+/**
+ * Giảm giá trị số nguyên của khóa
+ * @param key Khóa cần giảm giá trị
+ * @param by Số lượng giảm (mặc định là 1)
+ * @returns Promise trả về giá trị sau khi giảm
+ */
 async decrement(key: string, by = 1): Promise<number> {
   return this.redis.decrby(key, by);
 }
 ```
 
-#### Applications in NestJS
+#### Ứng dụng trong NestJS
 
-- **Caching**: Cache API responses or computed results
-- **Rate Limiting**: Track API call counts
-- **Session Storage**: Store user session data
-- **Configuration**: Store application settings
-- **One-time Tokens**: Generate and validate OTP
+- **Bộ nhớ đệm (Caching)**: Lưu trữ phản hồi API hoặc kết quả tính toán
+- **Giới hạn tốc độ (Rate Limiting)**: Giới hạn số lượng request
+- **Lưu trữ phiên (Session Storage)**: Lưu trữ dữ liệu phiên đăng nhập người dùng
+- **Cấu hình (Configuration)**: Lưu trữ cài đặt ứng dụng
+- **Mã thông báo một lần (One-time Tokens)**: Lưu trữ và xác thực OTP
 
 ```typescript
-// Example: Rate limiting middleware
+// Ví dụ: Middleware giới hạn tốc độ
 @Injectable()
 export class RateLimitMiddleware implements NestMiddleware {
   constructor(private readonly redisService: RedisService) {}
@@ -135,11 +171,11 @@ export class RateLimitMiddleware implements NestMiddleware {
 
     const count = await this.redisService.increment(key);
     if (count === 1) {
-      await this.redisService.redis.expire(key, 60); // 1 minute window
+      await this.redisService.redis.expire(key, 60); // Cửa sổ 1 phút
     }
 
     if (count > 100) {
-      res.status(429).send("Too Many Requests");
+      res.status(429).send("Quá nhiều yêu cầu");
       return;
     }
 
@@ -148,14 +184,21 @@ export class RateLimitMiddleware implements NestMiddleware {
 }
 ```
 
-### Lists
+### Lists (Danh sách)
 
-Redis Lists are linked lists of string values, allowing you to add elements to the head or tail of the list.
+Danh sách trong Redis là danh sách liên kết của các giá trị chuỗi, cho phép bạn thêm phần tử vào đầu hoặc cuối danh sách.
 
-#### CRUD Operations
+#### Các thao tác CRUD
 
 ```typescript
-// In RedisService
+// Trong RedisService
+
+/**
+ * Thêm một hoặc nhiều giá trị vào đầu danh sách
+ * @param key Khóa của danh sách
+ * @param value Giá trị hoặc mảng giá trị cần thêm
+ * @returns Promise trả về độ dài mới của danh sách
+ */
 async addToHead(key: string, value: string | string[]): Promise<number> {
   if (Array.isArray(value)) {
     return this.redis.lpush(key, ...value);
@@ -163,6 +206,12 @@ async addToHead(key: string, value: string | string[]): Promise<number> {
   return this.redis.lpush(key, value);
 }
 
+/**
+ * Thêm một hoặc nhiều giá trị vào cuối danh sách
+ * @param key Khóa của danh sách
+ * @param value Giá trị hoặc mảng giá trị cần thêm
+ * @returns Promise trả về độ dài mới của danh sách
+ */
 async addToTail(key: string, value: string | string[]): Promise<number> {
   if (Array.isArray(value)) {
     return this.redis.rpush(key, ...value);
@@ -170,309 +219,93 @@ async addToTail(key: string, value: string | string[]): Promise<number> {
   return this.redis.rpush(key, value);
 }
 
+/**
+ * Lấy một phạm vi phần tử từ danh sách
+ * @param key Khóa của danh sách
+ * @param start Vị trí bắt đầu (mặc định là 0)
+ * @param stop Vị trí kết thúc (mặc định là -1, tức là đến cuối danh sách)
+ * @returns Promise trả về mảng các phần tử trong phạm vi
+ */
 async getListRange(key: string, start = 0, stop = -1): Promise<string[]> {
   return this.redis.lrange(key, start, stop);
 }
 
+/**
+ * Lấy độ dài của danh sách
+ * @param key Khóa của danh sách
+ * @returns Promise trả về số lượng phần tử trong danh sách
+ */
 async getListLength(key: string): Promise<number> {
   return this.redis.llen(key);
 }
 
+/**
+ * Lấy và xóa phần tử đầu tiên của danh sách
+ * @param key Khóa của danh sách
+ * @returns Promise trả về phần tử đã xóa hoặc null nếu danh sách trống
+ */
 async popFromHead(key: string): Promise<string | null> {
   return this.redis.lpop(key);
 }
 
+/**
+ * Lấy và xóa phần tử cuối cùng của danh sách
+ * @param key Khóa của danh sách
+ * @returns Promise trả về phần tử đã xóa hoặc null nếu danh sách trống
+ */
 async popFromTail(key: string): Promise<string | null> {
   return this.redis.rpop(key);
 }
 
+/**
+ * Xóa các phần tử khỏi danh sách dựa trên giá trị
+ * @param key Khóa của danh sách
+ * @param count Số lượng cần xóa (0: tất cả, >0: từ đầu, <0: từ cuối)
+ * @param value Giá trị cần xóa
+ * @returns Promise trả về số lượng phần tử đã xóa
+ */
 async removeFromList(key: string, count: number, value: string): Promise<number> {
   return this.redis.lrem(key, count, value);
 }
 
+/**
+ * Cắt bớt danh sách để chỉ giữ lại phạm vi đã chỉ định
+ * @param key Khóa của danh sách
+ * @param start Vị trí bắt đầu
+ * @param stop Vị trí kết thúc
+ * @returns Promise trả về 'OK' nếu thành công
+ */
 async trimList(key: string, start: number, stop: number): Promise<'OK'> {
   return this.redis.ltrim(key, start, stop);
 }
 ```
 
-#### Applications in NestJS
+#### Ứng dụng trong NestJS
 
-- **Task Queues**: Implement simple job processing queues
-- **Recent Activity**: Track user activity or latest content
-- **Timelines**: Implement social media timelines
-- **Leaderboards**: Store last N high scores
+- **Hàng đợi công việc (Task Queues)**: Triển khai hàng đợi xử lý công việc đơn giản
+- **Hoạt động gần đây (Recent Activity)**: Theo dõi hoạt động người dùng hoặc nội dung mới nhất
+- **Dòng thời gian (Timelines)**: Triển khai dòng thời gian mạng xã hội
+- **Bảng xếp hạng (Leaderboards)**: Lưu trữ N điểm cao nhất gần đây
 
 ```typescript
-// Example: Simple task queue
+// Ví dụ: Service hàng đợi công việc đơn giản
 @Injectable()
 export class TaskQueueService {
   private readonly queueKey = "tasks:queue";
 
   constructor(private readonly redisService: RedisService) {}
 
+  /**
+   * Thêm công việc mới vào hàng đợi
+   * @param task Công việc cần thêm
+   * @returns Promise trả về độ dài mới của hàng đợi
+   */
   async addTask(task: any): Promise<number> {
     return this.redisService.addToTail(this.queueKey, JSON.stringify(task));
   }
 
-  async processNextTask(): Promise<any | null> {
-    const taskData = await this.redisService.popFromHead(this.queueKey);
-    if (!taskData) return null;
-
-    return JSON.parse(taskData);
-  }
-
-  async getQueueSize(): Promise<number> {
-    return this.redisService.getListLength(this.queueKey);
-  }
-}
-```
-
-### Sets
-
-Redis Sets are unordered collections of unique strings, allowing for set operations like union, intersection, and difference.
-
-#### CRUD Operations
-
-```typescript
-// In RedisService
-async addToSet(key: string, member: string | string[]): Promise<number> {
-  if (Array.isArray(member)) {
-    return this.redis.sadd(key, ...member);
-  }
-  return this.redis.sadd(key, member);
-}
-
-async getSetMembers(key: string): Promise<string[]> {
-  return this.redis.smembers(key);
-}
-
-async isSetMember(key: string, member: string): Promise<number> {
-  return this.redis.sismember(key, member);
-}
-
-async removeFromSet(key: string, member: string | string[]): Promise<number> {
-  if (Array.isArray(member)) {
-    return this.redis.srem(key, ...member);
-  }
-  return this.redis.srem(key, member);
-}
-
-async getSetSize(key: string): Promise<number> {
-  return this.redis.scard(key);
-}
-
-async getRandomMember(key: string, count?: number): Promise<string | string[]> {
-  if (count) {
-    return this.redis.srandmember(key, count);
-  }
-  return this.redis.srandmember(key);
-}
-
-// Set operations
-async setIntersection(...keys: string[]): Promise<string[]> {
-  return this.redis.sinter(...keys);
-}
-
-async setUnion(...keys: string[]): Promise<string[]> {
-  return this.redis.sunion(...keys);
-}
-
-async setDifference(key: string, ...otherKeys: string[]): Promise<string[]> {
-  return this.redis.sdiff(key, ...otherKeys);
-}
-```
-
-#### Applications in NestJS
-
-- **User Tags/Interests**: Store user preferences or tags
-- **Unique Visitors**: Track unique page views
-- **Access Control**: Store user permissions or roles
-- **Relationship Management**: Track followers/following
-- **Content Filtering**: Filter duplicate content
-
-```typescript
-// Example: User tagging system
-@Injectable()
-export class UserTagService {
-  constructor(private readonly redisService: RedisService) {}
-
-  getUserTagKey(userId: string): string {
-    return `user:${userId}:tags`;
-  }
-
-  async addUserTags(userId: string, tags: string[]): Promise<number> {
-    return this.redisService.addToSet(this.getUserTagKey(userId), tags);
-  }
-
-  async getUserTags(userId: string): Promise<string[]> {
-    return this.redisService.getSetMembers(this.getUserTagKey(userId));
-  }
-
-  async removeUserTags(userId: string, tags: string[]): Promise<number> {
-    return this.redisService.removeFromSet(this.getUserTagKey(userId), tags);
-  }
-
-  async findUsersWithSimilarTags(
-    userId: string,
-    otherUserId: string
-  ): Promise<string[]> {
-    return this.redisService.setIntersection(
-      this.getUserTagKey(userId),
-      this.getUserTagKey(otherUserId)
-    );
-  }
-}
-```
-
-### Sorted Sets
-
-Redis Sorted Sets are similar to Sets but each member has an associated score for sorting. Elements are ordered from lowest to highest score.
-
-#### CRUD Operations
-
-```typescript
-// In RedisService
-async addToSortedSet(key: string, member: string, score: number): Promise<number> {
-  return this.redis.zadd(key, score, member);
-}
-
-async addMultipleToSortedSet(key: string, members: Array<[number, string]>): Promise<number> {
-  const args: (string | number)[] = [];
-  members.forEach(([score, member]) => {
-    args.push(score, member);
-  });
-  return this.redis.zadd(key, ...args);
-}
-
-async getSortedSetRange(key: string, start = 0, stop = -1, withScores = false): Promise<string[] | Array<{member: string, score: string}>> {
-  if (withScores) {
-    const result = await this.redis.zrange(key, start, stop, 'WITHSCORES');
-    const parsed: Array<{member: string, score: string}> = [];
-
-    for (let i = 0; i < result.length; i += 2) {
-      parsed.push({
-        member: result[i],
-        score: result[i + 1]
-      });
-    }
-
-    return parsed;
-  }
-
-  return this.redis.zrange(key, start, stop);
-}
-
-async getSortedSetRangeByScore(key: string, min: number | string, max: number | string, withScores = false): Promise<string[] | Array<{member: string, score: string}>> {
-  if (withScores) {
-    const result = await this.redis.zrangebyscore(key, min, max, 'WITHSCORES');
-    const parsed: Array<{member: string, score: string}> = [];
-
-    for (let i = 0; i < result.length; i += 2) {
-      parsed.push({
-        member: result[i],
-        score: result[i + 1]
-      });
-    }
-
-    return parsed;
-  }
-
-  return this.redis.zrangebyscore(key, min, max);
-}
-
-async removeFromSortedSet(key: string, member: string | string[]): Promise<number> {
-  if (Array.isArray(member)) {
-    return this.redis.zrem(key, ...member);
-  }
-  return this.redis.zrem(key, member);
-}
-
-async incrementScore(key: string, member: string, by = 1): Promise<string> {
-  return this.redis.zincrby(key, by, member);
-}
-
-async getSortedSetSize(key: string): Promise<number> {
-  return this.redis.zcard(key);
-}
-
-async getRank(key: string, member: string): Promise<number | null> {
-  return this.redis.zrank(key, member);
-}
-
-async getScore(key: string, member: string): Promise<string | null> {
-  return this.redis.zscore(key, member);
-}
-```
-
-#### Applications in NestJS
-
-- **Leaderboards**: Track user rankings based on scores
-- **Priority Queues**: Implement task priorities
-- **Rate Limiting**: Time-based rate limiting
-- **Time Series Data**: Store time-sorted events
-- **Rankings**: Implement ranking systems
-
-```typescript
-// Example: Leaderboard service
-@Injectable()
-export class LeaderboardService {
-  private readonly leaderboardKey = "game:leaderboard";
-
-  constructor(private readonly redisService: RedisService) {}
-
-  async addScore(userId: string, score: number): Promise<number> {
-    return this.redisService.addToSortedSet(this.leaderboardKey, userId, score);
-  }
-
-  async incrementScore(userId: string, by = 1): Promise<string> {
-    return this.redisService.incrementScore(this.leaderboardKey, userId, by);
-  }
-
-  async getTopScores(
-    count = 10
-  ): Promise<Array<{ userId: string; score: string }>> {
-    const result = (await this.redisService.getSortedSetRange(
-      this.leaderboardKey,
-      0,
-      count - 1,
-      true
-    )) as Array<{ member: string; score: string }>;
-
-    return result.map((item) => ({
-      userId: item.member,
-      score: item.score,
-    }));
-  }
-
-  async getUserRank(userId: string): Promise<number | null> {
-    return this.redisService.getRank(this.leaderboardKey, userId);
-  }
-}
-```
-
-### Hashes
-
-Redis Hashes store field-value pairs, making them perfect for representing objects.
-
-#### CRUD Operations
-
-```typescript
-// In RedisService
-async setHashField(key: string, field: string, value: string): Promise<number> {
-  return this.redis.hset(key, field, value);
-}
-
-async setMultipleHashFields(key: string, fieldValues: Record<string, string>): Promise<number> {
-  return this.redis.hset(key, fieldValues);
-}
-
-async getHashField(key: string, field: string): Promise<string | null> {
-  return this.redis.hget(key, field);
-}
-
-async getAllHashFields(key: string): Promise<Record<string, string>> {
-  return this.redis.hgetall(key);
-}
-
-async getMultiple
-```
+  /**
+   * Xử lý công việc tiếp theo trong hàng đợi
+   * @returns Promise trả về công việc đã lấy hoặc null nếu hàng đợi trống
+   */
+  async processNextTask(): Promise<any |
