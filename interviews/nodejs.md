@@ -247,5 +247,15 @@
   - 1️⃣ Chạy mã đồng bộ (Synchronous Code Execution).
   - 2️⃣ Xử lý các callback từ các tác vụ bất đồng bộ (Asynchronous Callbacks).
   - 3️⃣ Sử dụng Event Loop để kiểm tra hàng đợi (queue) và thực thi các tác vụ chờ xử lý.
+    
+- Non-blocking I/O là một mô hình xử lý I/O (Input/Output) trong đó các tác vụ I/O không làm gián đoạn (block) quá trình thực thi của chương trình. Thay vì đợi một tác vụ I/O (như đọc file, truy vấn cơ sở dữ liệu, hoặc gửi yêu cầu HTTP) hoàn thành trước khi tiếp tục thực hiện các tác vụ khác, mô hình non-blocking cho phép chương trình tiếp tục thực thi các tác vụ khác trong khi chờ kết quả của tác vụ I/O.
 
+  - Cách thức hoạt động:
+Khi một yêu cầu I/O được thực hiện, hệ thống sẽ không "chặn" hoặc dừng lại để đợi kết quả trả về. Thay vào đó, yêu cầu được gửi đi và chương trình tiếp tục thực thi các tác vụ khác.
+Khi tác vụ I/O hoàn thành, một callback (hoặc promise) sẽ được gọi để xử lý kết quả trả về.
+Ví dụ, trong Node.js, khi bạn thực hiện một thao tác đọc file, thay vì chương trình dừng lại và đợi file được đọc xong, Node.js sẽ tiếp tục thực thi các tác vụ khác. Khi file đã được đọc xong, callback mà bạn cung cấp sẽ được gọi để xử lý kết quả.
+
+  - Lợi ích:
+Tối ưu hóa hiệu suất: Non-blocking I/O giúp tận dụng tối đa tài nguyên hệ thống, vì hệ thống không phải chờ đợi một tác vụ I/O hoàn thành trước khi tiếp tục xử lý các tác vụ khác.
+Khả năng xử lý đồng thời: Mặc dù Node.js là đơn luồng, mô hình non-blocking I/O cho phép xử lý hàng nghìn yêu cầu đồng thời mà không gặp phải các vấn đề về tắc nghẽn (blocking).
 
